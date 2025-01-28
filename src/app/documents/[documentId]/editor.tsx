@@ -2,7 +2,9 @@
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import { Color } from "@tiptap/extension-color";
 import FontFamily from "@tiptap/extension-font-family";
+import Highlight from "@tiptap/extension-highlight";
 import Image from "@tiptap/extension-image";
 import ImageResize from "tiptap-extension-resize-image";
 import Table from "@tiptap/extension-table";
@@ -19,7 +21,7 @@ import { useEditorStore } from "@/store/use-editor-store";
 export const Editor = () => {
   const { setEditor } = useEditorStore();
 
-	const editor = useEditor({
+  const editor = useEditor({
     editorProps: {
       attributes: {
         style: "padding-left: 56px; padding-right: 56px;",
@@ -53,11 +55,13 @@ export const Editor = () => {
     },
     extensions: [
       StarterKit,
+      Color,
       FontFamily,
+      Highlight.configure({ multicolor: true }),
       Image,
       ImageResize,
       Table.configure({
-        resizable: true
+        resizable: true,
       }),
       TableCell,
       TableHeader,
