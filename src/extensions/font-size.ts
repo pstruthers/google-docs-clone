@@ -8,7 +8,7 @@ declare module "@tiptap/core" {
 			unsetFontSize: () => ReturnType
 		}
 	}
-}
+};
 
 export const FontSizeExtension = Extension.create({
 	name: "fontSize",

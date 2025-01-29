@@ -6,6 +6,7 @@ import { FontSizeButton } from "@/components/toolbar/font-size-button";
 import { HeadingLevelButton } from "@/components/toolbar/heading-level-button";
 import { HighlightColorButton } from "@/components/toolbar/highlight-color-button";
 import { ImageButton } from "@/components/toolbar/image-button";
+import { LineHeightButton } from "@/components/toolbar/line-height-button";
 import { LinkButton } from "@/components/toolbar/link-button";
 import { ListButton } from "@/components/toolbar/list-button";
 import { TextColorButton } from "@/components/toolbar/text-color-button";
@@ -133,7 +134,7 @@ export const Toolbar = () => {
       <LinkButton />
       <ImageButton />
       <AlignButton />
-      {/* TODO: Line height */}
+      <LineHeightButton />
       <ListButton />
       {sections[2].map((item) => (
         <ToolbarButton key={item.label} {...item} />
