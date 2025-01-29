@@ -2,6 +2,7 @@
 
 import { AlignButton } from "@/components/toolbar/align-button";
 import { FontFamilyButton } from "@/components/toolbar/font-family-button";
+import { FontSizeButton } from "@/components/toolbar/font-size-button";
 import { HeadingLevelButton } from "@/components/toolbar/heading-level-button";
 import { HighlightColorButton } from "@/components/toolbar/highlight-color-button";
 import { ImageButton } from "@/components/toolbar/image-button";
@@ -120,7 +121,8 @@ export const Toolbar = () => {
       <FontFamilyButton />
       <Separator orientation="vertical" className="h-6 bg-neutral-300" />
       <HeadingLevelButton />
-      {/* TODO: Font size */}
+      <Separator orientation="vertical" className="h-6 bg-neutral-300" />
+      <FontSizeButton />
       <Separator orientation="vertical" className="h-6 bg-neutral-300" />
       {sections[1].map((item) => (
         <ToolbarButton key={item.label} {...item} />
