@@ -10,7 +10,7 @@ import { useSearchParam } from "@/hooks/use-search-param";
 const Home = () => {
   const [search] = useSearchParam("search");
 
-  const { results, status, loadMore } = usePaginatedQuery(api.documents.get, { search }, { initialNumItems: 5 });
+  const { results, status, loadMore } = usePaginatedQuery(api.documents.get, { search }, { initialNumItems: 10 });
 
   return (
     <div className="flex flex-col min-h-screen">

@@ -63,7 +63,7 @@ export const DocumentsTable = ({
 				<Button
 					variant="ghost"
 					size="sm"
-					onClick={() => loadMore(5)}
+					onClick={() => loadMore(10)}
 					disabled={status !== "CanLoadMore"}
 				>
 					{status === "CanLoadMore" ? "Load more" : "End of results"}
