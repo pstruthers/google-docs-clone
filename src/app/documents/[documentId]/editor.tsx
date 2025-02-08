@@ -19,6 +19,7 @@ import TextStyle from "@tiptap/extension-text-style";
 import Underline from "@tiptap/extension-underline";
 
 import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
+import { useStorage } from "@liveblocks/react";
 
 import { useEditorStore } from "@/store/use-editor-store";
 import { FontSizeExtension } from "@/extensions/font-size";
@@ -28,6 +29,9 @@ import { Ruler } from "./ruler";
 import { Threads } from "./threads";
 
 export const Editor = () => {
+  const leftMargin = useStorage((root) => root.leftMargin);
+  const rightMargin = useStorage((root) => root.rightMargin);
+
   const liveblocks = useLiveblocksExtension();
   
   const { setEditor } = useEditorStore();
@@ -35,7 +39,7 @@ export const Editor = () => {
   const editor = useEditor({
     editorProps: {
       attributes: {
-        style: "padding-left: 56px; padding-right: 56px;",
+        style: `padding-left: ${leftMargin ?? 56}px; padding-right: ${rightMargin ?? 56}px;`,
         class:
           "focus:outline-none border border-[#C7C7C7] print:border-0 bg-white flex flex-col w-[816px] min-h-[1054px] py-10 pr-14 cursor-text",
       },
