@@ -1,16 +1,18 @@
 import { useRef, useState } from "react";
 import { FaCaretDown } from "react-icons/fa";
 import { useStorage, useMutation } from "@liveblocks/react";
+import { LEFT_MARGIN_DEFAULT, RIGHT_MARGIN_DEFAULT } from "@/constants/margins";
+import { PAGE_WIDTH } from "@/constants/dimensions";
 
 const markers = Array.from({ length: 83 }, (_, i) => i);
 
 export const Ruler = () => {
-	const leftMargin = useStorage((root) => root.leftMargin) ?? 56;
+	const leftMargin = useStorage((root) => root.leftMargin) ?? LEFT_MARGIN_DEFAULT;
 	const setLeftMargin = useMutation(({ storage }, position: number) => {
 		storage.set("leftMargin", position);
 	}, []);
 
-	const rightMargin = useStorage((root) => root.rightMargin) ?? 56;
+	const rightMargin = useStorage((root) => root.rightMargin) ?? RIGHT_MARGIN_DEFAULT;
 	const setRightMargin = useMutation(({ storage }, position: number) => {
 		storage.set("rightMargin", position);
 	}, []);
@@ -29,7 +31,6 @@ export const Ruler = () => {
 	};
 
 	const handleMouseMove = (e: React.MouseEvent) => {
-		const PAGE_WIDTH = 816;
 		const MIN_SPACE = 100;
 
 		if ((isDraggingLeft || isDraggingRight) && rulerRef.current) {
@@ -59,11 +60,11 @@ export const Ruler = () => {
 	};
 
 	const handleLeftDoubleClick = () => {
-		setLeftMargin(56);
+		setLeftMargin(LEFT_MARGIN_DEFAULT);
 	};
 
 	const handleRightDoubleClick = () => {
-		setRightMargin(56);
+		setRightMargin(RIGHT_MARGIN_DEFAULT);
 	};
 
 	return (
@@ -72,12 +73,10 @@ export const Ruler = () => {
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-      className="w-[816px] mx-auto flex items-end relative select-none h-6 border-b border-gray-300 print:hidden"
+      style={{ width: `${PAGE_WIDTH}px` }}
+      className="mx-auto flex items-end relative select-none h-6 border-b border-gray-300 print:hidden"
     >
-      <div
-        id="ruler-container"
-        className="w-full h-full relative"
-      >
+      <div id="ruler-container" className="w-full h-full relative">
         <Marker
           position={leftMargin}
           isLeft={true}
@@ -93,9 +92,9 @@ export const Ruler = () => {
           onDoubleClick={handleRightDoubleClick}
         />
         <div className="h-full absolute inset-x-0 bottom-0">
-          <div className="w-[816px] h-full relative">
+          <div style={{ width: `${PAGE_WIDTH}px` }} className="h-full relative">
             {markers.map((marker) => {
-              const position = (marker * 816) / 82;
+              const position = (marker * PAGE_WIDTH) / 82;
 
               return (
                 <div
