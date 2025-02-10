@@ -48,7 +48,10 @@ export const RemoveDialog = ({ documentId, children }: RemoveDialogProps) => {
               setIsRemoving(true);
               remove({ id: documentId })
                 .catch(() => toast.error("Failed to remove document"))
-                .then(() => toast.success("Document removed"))
+                .then(() => {
+                  toast.success("Document removed");
+                  // TODO: Reroute to home page
+                })
                 .finally(() => setIsRemoving(false));
             }}
           >
