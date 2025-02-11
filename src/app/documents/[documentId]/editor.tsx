@@ -53,6 +53,7 @@ export const Editor = ({ initialContent }: EditorProps) => {
           "focus:outline-none border border-[#C7C7C7] print:border-0 bg-white flex flex-col min-h-[1054px] py-10 pr-14 cursor-text",
       },
     },
+    autofocus: true,
     immediatelyRender: false,
     onCreate({ editor }) {
       setEditor(editor);
